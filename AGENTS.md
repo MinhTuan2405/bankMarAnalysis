@@ -20,6 +20,6 @@
 ## Project conventions
 
 - Data: `pd.read_csv(path, sep=";")`; renamed columns via `COLUMN_MAP` (see `analysis/BankMarAnalysis_EDA.ipynb`, step 1.3). Reuse the same map in `analysis/BankMarAnalysis_Dashboard.ipynb` and `predict/`.
-- Results / findings: `analysis/result.md`.
+- Results / findings: `analysis/result.md`. Prediction plan: `predict/Predict_plan.md`.
 - `random_state=42` for anything random.
 - Every chart: titled, then `save_fig("<section>_<name>")` before `plt.show()` → `analysis/figures/*.png` (for the report). List the files under the matching section in `result.md`.
