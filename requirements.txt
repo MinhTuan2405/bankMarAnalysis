@@ -1,0 +1,15 @@
+# Data handling
+pandas>=2.2
+numpy>=1.26
+scipy>=1.13
+
+# Visualization
+matplotlib>=3.8
+seaborn>=0.13
+
+# Machine learning
+scikit-learn>=1.5
+
+# Jupyter
+jupyterlab>=4.2
+ipykernel>=6.29
