@@ -9,6 +9,9 @@ seaborn>=0.13
 
 # Machine learning
 scikit-learn>=1.5
+xgboost>=3.0
+lightgbm>=4.5
+imbalanced-learn>=0.12
 
 # Jupyter
 jupyterlab>=4.2

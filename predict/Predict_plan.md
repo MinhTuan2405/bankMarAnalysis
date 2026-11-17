@@ -27,13 +27,19 @@ Tạo feature theo các phát hiện của EDA
 
 ## [ ] 3. Train / Test Split
 
-Chia dữ liệu phù hợp với mất cân bằng và drift theo thời gian
+Chia dữ liệu phù hợp với mất cân bằng
 
-- [ ] Split chính: stratified random 80/20, `random_state=42`
-- [ ] Split phụ: theo thời gian — 80% dòng đầu train, 20% dòng cuối test (dữ liệu sắp theo thời gian, tỉ lệ đăng ký tăng từ ~3% lên ~50%)
+- [ ] Stratified random 80/20, `random_state=42`
 - [ ] Cross-validation trên tập train: `StratifiedKFold(5)`
 
-## [ ] 4. Baseline & Models
+## [ ] 4. Imbalanced Data
+
+Xử lý mất cân bằng (11.7% đăng ký), chọn cách theo kết quả CV
+
+- [ ] Phân bố lớp trên tập train
+- [ ] So sánh trên Logistic Regression: không xử lý / `class_weight` / undersampling / SMOTE
+
+## [ ] 5. Baseline & Models
 
 So sánh các model từ đơn giản đến phức tạp
 
@@ -44,26 +50,11 @@ So sánh các model từ đơn giản đến phức tạp
   - XGBoost (`scale_pos_weight ≈ 7.5`)
   - LightGBM (`class_weight="balanced"`)
 - [ ] Ensemble: Soft Voting / Stacking từ 3 model tốt nhất
-- [ ] Bảng so sánh tất cả model theo CV PR-AUC, thời gian train
-- [ ] Cài thêm `xgboost`, `lightgbm` vào `requirements.txt`
+- [ ] Mỗi model: fit trên train, đánh giá trên train và test (classification report, confusion matrix, ROC, PR)
+- [ ] Bảng + chart so sánh tất cả model
+- [ ] Cài thêm `xgboost`, `lightgbm`, `imbalanced-learn` vào `requirements.txt`
 
-## [ ] 5. Tuning
-
-Tối ưu model tốt nhất
-
-- [ ] `RandomizedSearchCV` với `scoring="average_precision"` (PR-AUC)
-- [ ] Chọn ngưỡng phân loại (threshold) trên dữ liệu validation: tối đa F1 hoặc đạt recall mục tiêu
-
-## [ ] 6. Evaluation
-
-Đánh giá trên tập test bằng metric phù hợp với dữ liệu mất cân bằng
-
-- [ ] PR-AUC (metric chính), ROC-AUC, precision, recall, F1
-- [ ] Confusion matrix, PR curve, ROC curve
-- [ ] Gain / lift chart: gọi top k% khách theo xác suất → bắt được bao nhiêu % khách đăng ký
-- [ ] So sánh kết quả random split vs time-based split
-
-## [ ] 7. Interpretation & Recommendations
+## [ ] 6. Interpretation & Recommendations
 
 Giải thích model và đề xuất cho chiến dịch
 
